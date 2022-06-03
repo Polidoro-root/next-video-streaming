@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-header-1 font-bold;
+  }
+
+  h2 {
+    @apply text-header-2 font-bold;
+  }
+
+  h3 {
+    @apply text-header-3 font-normal;
+  }
+
+  h4 {
+    @apply text-header-4 font-normal;
+  }
+}

@@ -1,8 +1,8 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { NextPageWithLayout } from '@/pages/page'
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
