@@ -1,4 +1,13 @@
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
+
 module.exports = {
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.plugins = [
+      new TsconfigPathsPlugin({ extensions: config.resolve.extensions }),
+    ]
+
+    return config
+  },
   stories: ['../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../public'],
   addons: [

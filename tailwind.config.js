@@ -15,6 +15,7 @@ module.exports = {
         300: '#4F4E50',
         500: '#363536',
       },
+      white: '#ffffff',
     },
     fontFamily: {
       sans: ['Montserrat', 'sans-serif'],

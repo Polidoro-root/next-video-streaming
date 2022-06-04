@@ -1,16 +1,16 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Logo } from './Logo'
+import Header from './Header'
 
 export default {
-  title: 'Components/Logo',
-  component: Logo,
+  title: 'Components/Header',
+  component: Header,
   argTypes: {
     //backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Logo>
+} as ComponentMeta<typeof Header>
 
-const Template: ComponentStory<typeof Logo> = (args) => <Logo {...args} />
+const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />
 
 export const Primary = Template.bind({})
