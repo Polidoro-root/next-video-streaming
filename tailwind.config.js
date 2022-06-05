@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx}',
@@ -21,15 +23,20 @@ module.exports = {
       sans: ['Montserrat', 'sans-serif'],
       serif: ['serif'],
     },
-    fontSize: {
-      'header-1': ['4rem', { lineHeight: '5.5rem' }],
-      'header-2': ['2.5rem', { lineHeight: '3rem' }],
-      'header-3': ['2.375rem', { lineHeight: '5.5rem' }],
-      'header-4': ['2rem', { lineHeight: '2.5rem' }],
-      subtitle: ['1.5rem', { lineHeight: '2rem' }],
-      'subtitle-2': ['1.25rem', { lineHeight: '2rem' }],
+    screens: {
+      xs: '320px',
+      ...(defaultTheme?.screens || {}),
     },
-    extend: {},
+    extend: {
+      fontSize: {
+        'header-1': ['4rem', { lineHeight: '5.5rem' }],
+        'header-2': ['2.5rem', { lineHeight: '3rem' }],
+        'header-3': ['2.375rem', { lineHeight: '5.5rem' }],
+        'header-4': ['2rem', { lineHeight: '2.5rem' }],
+        subtitle: ['1.5rem', { lineHeight: '2rem' }],
+        'subtitle-2': ['1.25rem', { lineHeight: '2rem' }],
+      },
+    },
   },
   plugins: [],
 }

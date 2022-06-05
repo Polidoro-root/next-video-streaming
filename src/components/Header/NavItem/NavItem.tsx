@@ -1,6 +1,6 @@
 import Link, { LinkProps } from 'next/link'
 import classNames from 'classnames'
-import { HTMLAttributes, ReactNode, useEffect } from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 import { useRouter } from 'next/router'
 
 interface NavItemProps extends LinkProps {
@@ -15,9 +15,9 @@ const NavItem = (props: NavItemProps) => {
 
   return (
     <Link {...props}>
-      <div
+      <li
         className={classNames(
-          'flex items-center justify-center gap-x-2 font-base font-semibold transition-colors duration-300',
+          'flex items-center justify-center gap-x-2 font-base font-semibold transition-colors duration-300 cursor-pointer',
           {
             'text-black-100': !isFilterActive,
             'text-white': isFilterActive,
@@ -26,7 +26,7 @@ const NavItem = (props: NavItemProps) => {
         )}
       >
         {props.children}
-      </div>
+      </li>
     </Link>
   )
 }

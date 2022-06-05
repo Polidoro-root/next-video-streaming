@@ -6,6 +6,7 @@ export const Logo = (props: SVGProps<SVGSVGElement>) => (
     height={77}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 308 77"
     {...props}
   >
     <path
