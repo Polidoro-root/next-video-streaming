@@ -1,7 +1,5 @@
-import { render, renderHook } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import singletonRouter from 'next/router'
-import NextLink from 'next/link'
-import userEvent from '@testing-library/user-event'
 import Header from './Header'
 
 import mockRouter from 'next-router-mock'
@@ -9,6 +7,13 @@ import mockRouter from 'next-router-mock'
 jest.mock('next/router', () => require('next-router-mock'))
 
 jest.mock('next/dist/client/router', () => require('next-router-mock'))
+
+const filterByQueryParams = [
+  { link: 'movies', text: 'Movies' },
+  { link: 'series', text: 'Series' },
+  { link: 'music-video', text: 'Music Video' },
+  { link: 'live-show', text: 'Live Show' },
+]
 
 describe('Page Header component', () => {
   beforeEach(() => {
@@ -24,22 +29,26 @@ describe('Page Header component', () => {
   it('Should start on the root path', () => {
     render(<Header />)
 
-    expect(location.pathname).toBe('/')
+    expect(singletonRouter).toMatchObject({ pathname: '/' })
   })
 
-  it('Should set query params to filterBy=movies', () => {
-    const { getByText } = render(<Header />)
+  describe('Navbar routing', () => {
+    filterByQueryParams.forEach((filterBy) => {
+      it(`Should set query params to filterBy=${filterBy.link} when ${filterBy.text} be clicked`, () => {
+        const { getByText } = render(<Header />)
 
-    const moviesLink = getByText(/movies/i)
+        const text = RegExp(filterBy.text, 'i')
 
-    userEvent.click(moviesLink)
+        const linkElement = getByText(text)
 
-    console.log(singletonRouter)
+        fireEvent.click(linkElement)
 
-    expect(singletonRouter).toMatchObject({
-      query: {
-        filterBy: 'movies',
-      },
+        expect(singletonRouter).toMatchObject({
+          query: {
+            filterBy: filterBy.link,
+          },
+        })
+      })
     })
   })
 })

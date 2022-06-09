@@ -54,7 +54,7 @@ const Header = (props: HeaderProps) => {
             }}
           >
             <MdLiveTv />
-            Live show
+            Live Show
           </NavItem>
         </ul>
       </nav>
